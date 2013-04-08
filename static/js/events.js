@@ -55,7 +55,7 @@ function adminEventEntry() {
 
 function addSchedule(element) {
 	$("#schedule-pane").html("");
-	if(csrftoken) {
+	if(authenticated) {
 		$(element).html(adminEventEntry() + scheduleToHTML())
 		$('#event-button').click(function() {
 			var date_raw = moment().format('YYYY') + '-' + $('textarea#event-month').val() + '-' + $('textarea#event-day').val()

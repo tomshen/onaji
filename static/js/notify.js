@@ -37,7 +37,7 @@ function adminNotifEntry() {
 }
 
 function addNotifications(element) {
-	if(csrftoken) {
+	if(authenticated) {
 		$(element).html(adminNotifEntry() + notifFeedToHTML())
 		$('#notif-button').click(function() {
 			$.post('/notifications/new/', {
