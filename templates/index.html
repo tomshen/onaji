@@ -1,0 +1,56 @@
+{% load static from staticfiles %}
+
+<html>
+
+  <head>
+    <title>Onaji</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Event management website.">
+    <meta name="keywords" content="template">
+    <meta name="author" content="Taylor Poulos">
+
+    <link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}">
+	  <script type="text/javascript" src="//use.typekit.net/dua2sjj.js"></script>
+	  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}"type="text/css">
+    <link rel="stylesheet"  href="{% static 'css/style.css' %}" type="text/css">
+  </head>
+
+<body>
+  <header>
+    <div class="title"> Onaji </div>
+    <div class="top-menu">
+      <div class="dropdown unselectable signup" id="signup-button">signup</div>
+      <div class="dropdown unselectable login" id="admin-button">admin</div>
+    </div>
+  </header>
+
+  <div class="switch" id="switch-left">
+    <div class="nav desktop question-bubble"></div>
+  </div>
+
+  <div class="switch" id="switch-right">
+    <div class="nav desktop cal"></div>
+  </div>
+
+  <div class="content-container">
+    <section class="schedule pane" id="schedule-pane" style="display:none">
+    </section>
+
+    <section class="notif pane" id="notif-pane">
+    </section>
+
+    <section class="quest pane" id="quest-pane" style = "display:none">
+    </section>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="{% static 'js/jquery.cookie.js' %}"></script>
+  <script src="{% static 'js/moment.min.js' %}"></script>
+  <script src="{% static 'js/qa.js' %}"></script>
+  <script src="{% static 'js/notify.js' %}"></script>
+  <script src="{% static 'js/events.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
