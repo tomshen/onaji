@@ -98,7 +98,7 @@ try:
     TWITTER_ACCESS_TOKEN_KEY = secrets.TWITTER_ACCESS_TOKEN_KEY
     TWITTER_ACCESS_TOKEN_SECRET = secrets.TWITTER_ACCESS_TOKEN_SECRET
 except:
-    DEBUG = False
+    DEBUG = True
 
     # Parse database configuration from $DATABASE_URL
     import dj_database_url
