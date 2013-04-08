@@ -1,4 +1,4 @@
-$('document').ready(function() {
+$(document).ready(function() {
   function subscribe(phone, email, name){
     if(!name){
       name = "No Name"
@@ -12,7 +12,7 @@ $('document').ready(function() {
     }
 
 
-    if(!validEmail(email) && email.length > 0){
+    if(!email || (!validEmail(email) && email.length > 0)) {
       alert("Please enter a valid email");
       return;
     }
@@ -27,7 +27,7 @@ $('document').ready(function() {
     });
     
   }
-  
+
   $("#signup-button").click(function() {
     alert("Enter an email and phone number for automatic event notifications");
     var name = prompt("name:");
@@ -78,10 +78,10 @@ $('document').ready(function() {
 
   function populateCurrentDiv(){
     if(current_pane == 0){
-      if(authenticated){
+      if(authenticated) {
         createQAndAFeed(getAllQuestionsBlob());
       }
-      else{
+      else {
         createQAndAFeed(getAnsweredQuestionsBlob());
       }
     }
