@@ -6,9 +6,9 @@ function createQAndAFeed(jsonblob){
       var n = jsonblob[i];
       insertQuestionNode(n.title, n.text, n.poster, n.post_date, n.answered, n.answer, n.answerer, n.question_id);
     }
-    if(!authenticated){
-      addQuestionFormNode();
-    }
+  }
+  if(!authenticated){
+    addQuestionFormNode();
   }
 }
 
