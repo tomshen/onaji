@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from twilio.rest import TwilioRestClient
 
 from subscribers.models import Subscriber
-from eventmemaybe.settings import TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
+import eventmemaybe.settings as secrets
 
 class Notification(models.Model):
     notification_id = models.IntegerField(blank=True, default=0)
@@ -26,7 +26,8 @@ class Notification(models.Model):
             for email in emails:
                 send_mail('Notification: ' + self.title, 
                     self.content, 'Onaji Events events@onaji.mailgun.org', [email])
-            client = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+            client = TwilioRestClient(secrets.TWILIO_ACCOUNT_SID,
+                                      secrets.TWILIO_AUTH_TOKEN)
             for phone in phone_numbers:
                 if len(phone) == 10:
                     phone = '1' + phone
@@ -35,7 +36,6 @@ class Notification(models.Model):
                     message = client.sms.messages.create(
                         to=phone, from_='+17174849472', body=self.title)
             if self.tweet_this:
-                import secrets
                 import twitter
                 api = twitter.Api(consumer_key=secrets.TWITTER_CONSUMER_KEY, 
                     consumer_secret=secrets.TWITTER_CONSUMER_SECRET, 
