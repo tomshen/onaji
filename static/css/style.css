@@ -478,3 +478,40 @@ QUESTIONS
   margin-top: 2rem;
   margin-bottom: 4rem;
 }
+
+/*===============
+FOOTER
+===============*/
+
+footer {
+  height:24px;
+  width: 100%;
+  background: white;
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  position: fixed;
+  bottom: 0pt;
+  left: 0pt;
+  font-size: 150%;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: #252525;
+  opacity: 0.9;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.7;
+}
+
+footer a:visited {
+  text-decoration: none;
+  color: inherit;
+  opacity: inherit;
+}
