@@ -1,5 +1,3 @@
-import secrets
-
 # Django settings for eventmemaybe project.
 
 DEBUG = True
@@ -84,9 +82,45 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+try:
+    import secrets
+    # Make this unique, and don't share it with anybody.
+    SECRET_KEY = secrets.DJANGO_SECRET_KEY
+    MAILGUN_ACCESS_KEY = secrets.MAILGUN_ACCESS_KEY
+    MAILGUN_SERVER_NAME = secrets.MAILGUN_SERVER_NAME
+    TWILIO_ACCOUNT_SID = secrets.TWILIO_ACCOUNT_SID
+    TWILIO_AUTH_TOKEN = secrets.TWILIO_AUTH_TOKEN
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = secrets.DJANGO_SECRET_KEY
+    TWITTER_CONSUMER_KEY = secrets.TWITTER_CONSUMER_KEY
+    TWITTER_CONSUMER_SECRET = secrets.TWITTER_CONSUMER_SECRET
+
+    TWITTER_ACCESS_TOKEN_KEY = secrets.TWITTER_ACCESS_TOKEN_KEY
+    TWITTER_ACCESS_TOKEN_SECRET = secrets.TWITTER_ACCESS_TOKEN_SECRET
+except:
+    DEBUG = False
+
+    # Parse database configuration from $DATABASE_URL
+    import dj_database_url
+    import os
+    DATABASES['default'] =  dj_database_url.config()
+
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+    MAILGUN_ACCESS_KEY = os.environ['MAILGUN_ACCESS_KEY']
+    MAILGUN_SERVER_NAME = os.environ['MAILGUN_SERVER_NAME']
+    TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
+    TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
+
+    TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
+    TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
+
+    TWITTER_ACCESS_TOKEN_KEY = os.environ['TWITTER_ACCESS_TOKEN_KEY']
+    TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
+
+
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -163,7 +197,3 @@ LOGGING = {
         },
     }
 }
-
-EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
-MAILGUN_ACCESS_KEY = secrets.MAILGUN_ACCESS_KEY
-MAILGUN_SERVER_NAME = secrets.MAILGUN_SERVER_NAME

@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from twilio.rest import TwilioRestClient
 
 from subscribers.models import Subscriber
-from secrets import TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
+from eventmemaybe.settings import TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
 
 class Notification(models.Model):
     notification_id = models.IntegerField(blank=True, default=0)
