@@ -1,6 +1,7 @@
 *.log
 *.pot
 *.pyc
+
 secrets.py
 development.db
 serve.sh

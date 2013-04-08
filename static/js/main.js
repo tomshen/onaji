@@ -78,7 +78,7 @@ $('document').ready(function() {
 
   function populateCurrentDiv(){
     if(current_pane == 0){
-      if(csrftoken){
+      if(authenticated){
         createQAndAFeed(getAllQuestionsBlob());
       }
       else{

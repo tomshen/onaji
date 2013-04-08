@@ -1,27 +1,14 @@
-function csrfSafeMethod(method) {
-  // these HTTP methods do not require CSRF protection
-  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-$.ajaxSetup({
-  crossDomain: false, // obviates need for sameOrigin test
-  async: false,
-  beforeSend: function(xhr, settings) {
-    if (!csrfSafeMethod(settings.type)) {
-      xhr.setRequestHeader("X-CSRFToken", csrftoken);
-    }
-  }
-});
-var csrftoken = $.cookie('csrftoken');
-
 function createQAndAFeed(jsonblob){
   $("#quest-pane").html("");
-  jsonblob.reverse();
-  for(var i = 0; i<jsonblob.length; i++){
-    var n = jsonblob[i];
-    insertQuestionNode(n.title, n.text, n.poster, n.post_date, n.answered, n.answer, n.answerer, n.question_id);
-  }
-  if(!csrftoken){
-    addQuestionFormNode();
+  if(jsonblob && jsonblob.length > 0) {
+    jsonblob.reverse();
+    for(var i = 0; i<jsonblob.length; i++){
+      var n = jsonblob[i];
+      insertQuestionNode(n.title, n.text, n.poster, n.post_date, n.answered, n.answer, n.answerer, n.question_id);
+    }
+    if(!authenticated){
+      addQuestionFormNode();
+    }
   }
 }
 
