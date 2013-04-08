@@ -1,4 +1,4 @@
-# Onaji
+# [Onaji](http://onaji.herokuapp.com/)
 
 ## Description
 Whereas a medium size, multi-day event (like say, a hackathon) would have a Twitter for real-time updates, a Piazza for Q&A, and paper fliers or a static website for an event schedule, **Onaji** provides one standardized interface for all of these activities. The service can also send updates out to attendee's cell phones and email addresses.
