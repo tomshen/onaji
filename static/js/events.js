@@ -40,10 +40,7 @@ function adminEventEntry() {
       <div class="event new">\
         <div class="event-head">\
           <textarea type="text" placeholder="Event Name" class="fit-text" id="event-name" ></textarea>\
-          <textarea type="text" maxlength="2" class="date-text" id="event-month" placeholder="mm" ></textarea>\
-          <textarea type="text" maxlength="2" class="date-text" id="event-day" placeholder="dd" ></textarea>\
-          <textarea type="text" maxlength="2" class="date-text" id="event-hour" placeholder="hh" ></textarea>\
-          <textarea type="text" maxlength="2" class="date-text" id="event-minute" placeholder="mm" ></textarea>\
+          <textarea type="text" placeholder="Date" class="date-text" id="date"></textarea>\
           <textarea type="text" placeholder="location" class="fit-text" id="event-location" ></textarea>\
         </div>\
         <div class="event-body">\
@@ -57,10 +54,18 @@ function addSchedule(element) {
 	$("#schedule-pane").html("");
 	if(authenticated) {
 		$(element).html(adminEventEntry() + scheduleToHTML())
+		$('#date').datetimepicker({
+			timeFormat: 'h:mmtt',
+			stepHour: 1,
+			stepMinute: 15,
+			addSliderAccess: true,
+			sliderAccessArgs: { touchonly: false }
+		})
 		$('#event-button').click(function() {
-			var date_raw = moment().format('YYYY') + '-' + $('textarea#event-month').val() + '-' + $('textarea#event-day').val()
-			var time_raw = $('textarea#event-hour').val()  + ':' + $('textarea#event-minute').val()
-			var date = moment(date_raw + 'T'+ time_raw)
+			//var date_raw = moment().format('YYYY') + '-' + $('textarea#event-month').val() + '-' + $('textarea#event-day').val()
+			//var time_raw = $('textarea#event-hour').val()  + ':' + $('textarea#event-minute').val()
+			var datetime_raw = $('textarea#date').val()
+			var date = moment(datetime_raw, "MM/D/YYYY h:ma")
 			$.post('/events/new/', {
 				"name": $('textarea#event-name').val(),
 				"location": $('textarea#event-location').val(),

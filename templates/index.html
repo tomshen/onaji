@@ -14,7 +14,8 @@
 	  <script type="text/javascript" src="//use.typekit.net/dua2sjj.js"></script>
 	  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <link rel="stylesheet" href="{% static 'css/reset.css' %}"type="text/css">
-    <link rel="stylesheet"  href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.3.custom.min.css' %}" type="text/css">
   </head>
 
 <body>
@@ -53,6 +54,8 @@
     var authenticated = {{ auth }};
   </script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="{% static 'js/jquery-ui-timepicker-addon.js' %}"></script>
   <script src="{% static 'js/jquery.cookie.js' %}"></script>
   <script src="{% static 'js/token.js' %}"></script>
   <script src="{% static 'js/moment.min.js' %}"></script>
