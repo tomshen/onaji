@@ -40,7 +40,7 @@ function adminEventEntry() {
       <div class="event new">\
         <div class="event-head">\
           <textarea type="text" placeholder="Event Name" class="fit-text" id="event-name" ></textarea>\
-          <textarea type="text" placeholder="Date" class="date-text" id="date"></textarea>\
+          <input type="text" placeholder="Date" class="date-text" id="date"></input>\
           <textarea type="text" placeholder="location" class="fit-text" id="event-location" ></textarea>\
         </div>\
         <div class="event-body">\
@@ -64,7 +64,7 @@ function addSchedule(element) {
 		$('#event-button').click(function() {
 			//var date_raw = moment().format('YYYY') + '-' + $('textarea#event-month').val() + '-' + $('textarea#event-day').val()
 			//var time_raw = $('textarea#event-hour').val()  + ':' + $('textarea#event-minute').val()
-			var datetime_raw = $('textarea#date').val()
+			var datetime_raw = $('input#date').val()
 			var date = moment(datetime_raw, "MM/D/YYYY h:ma")
 			$.post('/events/new/', {
 				"name": $('textarea#event-name').val(),
