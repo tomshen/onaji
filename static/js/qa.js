@@ -67,7 +67,9 @@ function insertQuestionNode(title, content, poster, post_date, answered, answer,
   var h1 = $("<h1>").html(title);
   var h2 = $("<h2>").html(content);
   var h4 = $("<h4>").html(poster);
-  var h5 = $("<h5>").html(moment().fromNow(post_date) + ' ago');
+  var h5 = $("<h5>").html(moment(post_date).fromNow());
+  console.log(post_date);
+
   newDiv.append(h1).append(h2).append(h4).append(h5);
   if(!answered && csrftoken){
     newDiv.addClass("answer");
