@@ -3,7 +3,7 @@ function notifToHTML(data) {
 	html += '<h1>' + data.title +  '</h1>'
     html += '<p>' + data.content + '</p>'
     html += '<h2>' + data.poster + '</h2>'
-    html += '<h3>' + moment(data.post_date).format('hh:mm') + '</h3></div>'
+    html += '<h3>' + moment(data.post_date).format('h:mma<br>MMM Do YYYY ') + '</h3></div>'
     return html
 }
 

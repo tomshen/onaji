@@ -2,14 +2,14 @@ function eventToHTML(data) {
 	var html = ''
 	var date = moment(data.date)
 	
-	html += '<h1>' + date.format('dddd') + '</h1>'
+	html += '<h1>' + date.format('dddd (M/D)') + '</h1>'
 	html += '<div class="event"><div class="event-head">'
 	html += '<h2>' + data.name + '</h2>'
-	html += '<h3>' + date.format('hh:mm') + '</h3>'
+	html += '<h3>' + date.format('h:mma') + '</h3>'
 	html += '<h4>' + data.location + '</h4>'
-	html += '<div class="edit small icon"></div> \
-             <div class="delete small icon"></div> \
-			 </div><div class="event-body"><p>'
+	/* html += '<div class="edit small icon"></div> \
+             <div class="delete small icon"></div>' */
+	html += '</div><div class="event-body"><p>'
     html += data.description + '</p></div></div>'
 	return html
 }
